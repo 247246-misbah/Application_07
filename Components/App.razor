@@ -15,8 +15,44 @@
 </head>
 
 <body>
-    <Routes />
+    <Routes @rendermode="InteractiveServer" />
     <ReconnectModal />
+
+    <script>
+            window.themeManager = {
+                getTheme: function () {
+                    try {
+                        return localStorage.getItem('theme') || 'light';
+                    } catch (e) {
+                        return 'light';
+                    }
+                },
+                setTheme: function (theme) {
+                    try {
+                        localStorage.setItem('theme', theme);
+                        if (theme === 'dark') {
+                            document.body.classList.add('dark-theme');
+                        } else {
+                            document.body.classList.remove('dark-theme');
+                        }
+                    } catch (e) {
+                        console.error("Theme storage failed:", e);
+                    }
+                }
+            };
+
+            // Instant check execution running before Blazor boots to avoid a blinding flash
+            (function () {
+                try {
+                    var savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'dark') {
+                        document.body.classList.add('dark-theme');
+                    }
+                } catch (e) {
+                    console.warn("Theme auto-check skipped:", e);
+                }
+            })();
+    </script>
     <script src="@Assets["_framework/blazor.web.js"]"></script>
 </body>
 

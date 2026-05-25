@@ -58,3 +58,118 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+/* --- Modern Theme Variable System --- */
+:root {
+    --bg-main: #ffffff;
+    --bg-sidebar: #1e1b4b; /* Deep Indigo Sidebar */
+    --bg-topbar: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --nav-item-color: #cbd5e1;
+    --nav-item-active: #ffffff;
+    --nav-item-hover-bg: rgba(255, 255, 255, 0.1);
+    --border-color: #e2e8f0;
+    --card-bg: #ffffff;
+}
+
+/* --- Dark Mode Variables Overrides --- */
+body.dark-theme {
+    --bg-main: #0f172a; /* Sleek Slate 900 */
+    --bg-sidebar: #020617; /* Darker Slate 950 */
+    --bg-topbar: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --nav-item-color: #94a3b8;
+    --nav-item-active: #38bdf8; /* Sky Blue Accent */
+    --nav-item-hover-bg: #1e293b;
+    --border-color: #334155;
+    --card-bg: #1e293b;
+}
+
+/* --- Core Structure Mapping --- */
+body, html {
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.page {
+    background-color: var(--bg-main);
+}
+
+.sidebar {
+    background-image: none !important;
+    background-color: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-color);
+}
+
+.top-row.navbar-dark {
+    background-color: rgba(0,0,0,0.1) !important;
+}
+
+.navbar-brand {
+    color: var(--nav-item-active) !important;
+    font-weight: 700;
+}
+
+.nav-scrollable {
+    background-color: transparent !important;
+}
+
+.nav-item a {
+    color: var(--nav-item-color) !important;
+    border-radius: 8px;
+    margin: 4px 12px;
+    transition: all 0.2s ease;
+}
+
+    .nav-item a:hover {
+        background-color: var(--nav-item-hover-bg) !important;
+        color: var(--nav-item-active) !important;
+    }
+
+    .nav-item a.active {
+        background-color: var(--nav-item-hover-bg) !important;
+        color: var(--nav-item-active) !important;
+        font-weight: 600;
+    }
+
+.top-row {
+    background-color: var(--bg-topbar) !important;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main) !important;
+}
+
+p, span, label {
+    color: var(--text-muted);
+}
+
+/* --- Theme Toggle Pill Button Styles --- */
+.theme-toggle-btn {
+    padding: 6px 16px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .theme-toggle-btn:hover {
+        transform: translateY(-1px);
+        background-color: var(--border-color);
+    }s
